@@ -1,0 +1,149 @@
+******fourth section
+.call{
+    display: flex;
+    align-items: center;
+     justify-content: space-between;
+    margin: 80px 280px;
+    background-color: #3882f6;
+    padding: 40px 80px;
+    border: 4px solid #3882f6;
+    border-radius: 8px;
+
+}
+.call-to-action>h2, .call-to-action>p{
+    color: white;
+    margin: 0;
+}
+
+
+.call-to-action{
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    text-align: center;
+    padding: 20px;
+}
+.call-text{
+    flex: 1;
+    text-align: left;
+}
+.call-button{
+    border: 2px solid white;
+    border-radius: 8px;
+    padding : 5px 15px;
+    color: #f9faf8;
+    font-weight: 600;
+    cursor: pointer;
+    margin-left: 20px;
+}
+.call>.call-to-action>button, .call>.call-to-action{
+    background-color: #3882f6;
+    
+}
+
+❌ Problems in the CSS:
+Issue	Why it's a problem
+.call-to-action is flex-direction: row; inside .call, which is already flex — redundancy	
+.call-text and .call-to-action both have flex: 1 — but the button isn't getting space	
+margin: 80px 280px; on .call is too fixed — not responsive	
+Button layout not aligned properly in Flex (not centered vertically)	
+.call-to-action > h2, p selector doesn't match — those elements are nested in .call-text, not directly inside .call-to-action
+
+
+.call {
+  display: flex;
+  justify-content: center;
+  margin: 100px auto;
+  padding: 40px 20px;
+  width: 80%;
+  background-color: #3882f6;
+  border: 4px solid #3882f6;
+  border-radius: 8px;
+}
+
+.call-to-action {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  flex: 1;
+}
+
+.call-text {
+  flex: 1;
+  color: white;
+}
+
+.call-text h2,
+.call-text p {
+  margin: 0;
+  margin-right: 50px;
+}
+
+.call-button {
+  border: 2px solid white;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.call-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.call-button>button {
+  all: unset;
+  cursor: pointer;
+  color: white;
+  font-size: inherit;
+}
+
+
+✅ Why the new adjustments works better:
+.call becomes a centered container with a max width.
+.call-to-action becomes the flex row, distributing space between text and button.
+.call-text holds heading and paragraph properly and gets all the space it needs.
+Button stays right-aligned and vertically centered.
+No hard-coded margins like margin: 280px — replaced with responsive centering via margin: auto and max-width.
+
+
+******second section
+.info{
+    font:36px #1F2937 900;
+    text-align: center;
+    margin: 20px 300px;
+}
+.card-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /*max-width: fit-content; */
+    gap:40px;
+    padding: 0% 20px;
+}
+.card {
+  text-align: center;
+  min-width:0; /* prevents overflow */
+  max-width: 200px; /* optional: controls maximum growth */
+}
+.card-image{
+    aspect-ratio: 1 / 1;
+    padding: 70px;
+    border: #3882f6 2px solid   ;
+    border-radius: 15px;
+     /*margin: 0 10px 10px auto;*/
+}
+.card p{
+    color: #1F2937;
+    font-size: 18px;
+    font-weight: 300;
+    /*max-width:60%;
+    text-align: center;*/
+}
+
+🔍 What Was Fixed or Improved
+Issue	                                       Fix
+font: 36px #1F2937 900	     Wrong syntax – changed to font-size, color, font-weight individually
+padding: 70px in .card-image	Overly large and non-responsive – reduced to 20px
+min-width: 0 in .card	       Not needed with flex rules and max-width fallback
+Lack of responsiveness	        Added flex-wrap: wrap and flex: 1 1 200px for adaptive layout
+Hardcoded wide margins in .info	    Changed to centered max-width for more flexibility
